@@ -39,14 +39,15 @@ function Accordion({ data }) {
           key={el.title}
           num={index}
           title={el.title}
-          text={el.text}
-        />
+        >
+          {el.text}
+        </AccordionItem>
       )}
     </div>
   );
 }
 
-function AccordionItem({ num, title, text, currentOpen, onOpen }) {
+function AccordionItem({ num, title, currentOpen, onOpen, children }) {
   const isOpen = num === currentOpen;
   function handleToggle() {
     onOpen(isOpen ? null : num);
@@ -65,7 +66,7 @@ function AccordionItem({ num, title, text, currentOpen, onOpen }) {
       </p>
       {isOpen &&
         <div className="content-box">
-          {" "}{text}{" "}
+          {" "}{children}{" "}
         </div>}
     </div>
   );
